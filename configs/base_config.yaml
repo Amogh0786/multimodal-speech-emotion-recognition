@@ -1,0 +1,43 @@
+# configs/base_config.yaml
+
+defaults:
+  - _self_
+
+project:
+  name: "speech-emotion-recognition"
+  seed: 42
+  workspace_dir: "./"
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  sample_rate: 16000
+  duration: 3.0 # seconds
+  n_classes: 4
+  n_folds: 5
+  batch_size: 32
+  num_workers: 4
+
+model:
+  type: "wav2vec2" # options: 'wav2vec2', 'resnet18'
+  backbone_name: "facebook/wav2vec2-base"
+  freeze_feature_extractor: true
+  dropout: 0.3
+  embed_dim: 768
+  
+training:
+  epochs: 50
+  learning_rate_backbone: 5e-5
+  learning_rate_head: 1e-3
+  weight_decay: 1e-2
+  warmup_ratio: 0.1
+  loss: "label_smoothing" # options: 'label_smoothing', 'focal'
+  label_smoothing_alpha: 0.1
+  focal_loss_gamma: 2.0
+  mixed_precision: true
+  gradient_clip_val: 1.0
+
+logging:
+  use_wandb: true
+  wandb_project: "speech-emotion-recognition"
+  log_dir: "logs"

@@ -1,0 +1,18 @@
+# configs/sweep_config.yaml
+
+program: src/pipeline/train.py
+method: bayes
+metric:
+  name: val_macro_f1
+  goal: maximize
+parameters:
+  training.learning_rate_backbone:
+    min: 1e-5
+    max: 1e-4
+  training.learning_rate_head:
+    min: 5e-4
+    max: 5e-3
+  model.dropout:
+    values: [0.1, 0.3, 0.5]
+  training.label_smoothing_alpha:
+    values: [0.0, 0.1, 0.2]
