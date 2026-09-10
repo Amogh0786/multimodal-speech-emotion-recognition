@@ -1,0 +1,39 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch/ML Models & Weights
+*.pth
+*.pt
+*.onnx
+*.h5
+best_model.pth
+
+# Data
+data/raw/
+data/processed/
+*.zip
+*.wav
+*.mp3
+*.flac
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Logs & Tracking
+logs/
+wandb/
+*.log
